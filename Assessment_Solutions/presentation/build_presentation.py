@@ -357,7 +357,7 @@ add_bullets(s, Inches(7.4), Inches(1.4), Inches(5.5), Inches(2.6), [
     "Still linear in the coefficients, so **lm()** fits it",
 ], size=16)
 add_code(s, Inches(7.4), Inches(4.1), Inches(5.5), Inches(1.5),
-         "model <- lm(response ~ dose + I(dose^2), data = trial)\n# or   lm(response ~ poly(dose, 2), data = trial)")
+         "model <- lm(response ~ dose + I(dose^2),\n            data = trial)\n# or:  lm(response ~ poly(dose, 2), data = trial)")
 add_bullets(s, Inches(7.4), Inches(5.7), Inches(5.5), Inches(1.2), [
     "Risk: high degrees **overfit** and behave wildly outside the data range",
 ], size=16)
