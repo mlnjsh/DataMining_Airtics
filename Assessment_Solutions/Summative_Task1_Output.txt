@@ -1,0 +1,354 @@
+=============================================
+ STEP 1 : LOAD AND INSPECT
+=============================================
+[1] 32 12
+'data.frame':	32 obs. of  12 variables:
+ $ model: chr  "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...
+ $ mpg  : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+ $ cyl  : int  6 6 4 6 8 6 8 4 4 6 ...
+ $ disp : num  160 160 108 258 360 ...
+ $ hp   : int  110 110 93 110 175 105 245 62 95 123 ...
+ $ drat : num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+ $ wt   : num  2.62 2.88 2.32 3.21 3.44 ...
+ $ qsec : num  16.5 17 18.6 19.4 17 ...
+ $ vs   : int  0 0 1 1 0 1 0 1 1 1 ...
+ $ am   : int  1 1 1 0 0 0 0 0 0 0 ...
+ $ gear : int  4 4 4 3 3 3 3 4 4 4 ...
+ $ carb : int  4 4 1 1 2 1 4 2 2 4 ...
+              model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+
+Missing values per column :
+model   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb 
+    0     0     0     0     0     0     0     0     0     0     0     0 
+
+=============================================
+ PART (a) : HISTOGRAM FUNCTION
+=============================================
+
+Summary of mpg :
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10.40   15.43   19.20   20.09   22.80   33.90 
+Summary of hp  :
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   52.0    96.5   123.0   146.7   180.0   335.0 
+Summary of wt  :
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.513   2.581   3.325   3.217   3.610   5.424 
+
+Histograms saved. mpg is slightly right-skewed (a few very
+economical cars), hp is strongly right-skewed (a few very
+powerful cars), wt is roughly symmetric.
+
+=============================================
+ STEP 2 : NUMERICAL EXPLORATION
+=============================================
+      mpg             cyl             disp             hp       
+ Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+ 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+ Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+ Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+ 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+ Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
+      drat             wt             qsec             vs        
+ Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+ 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+ Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+ Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+ 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+ Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+       am              gear            carb      
+ Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+ 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+ Median :0.0000   Median :4.000   Median :2.000  
+ Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+ 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :1.0000   Max.   :5.000   Max.   :8.000  
+
+Correlation with mpg :
+   mpg   drat     vs     am   gear   qsec   carb     hp   disp    cyl     wt 
+ 1.000  0.681  0.664  0.600  0.480  0.419 -0.551 -0.776 -0.848 -0.852 -0.868 
+
+Correlation matrix :
+       mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+mpg   1.00 -0.85 -0.85 -0.78  0.68 -0.87  0.42  0.66  0.60  0.48 -0.55
+cyl  -0.85  1.00  0.90  0.83 -0.70  0.78 -0.59 -0.81 -0.52 -0.49  0.53
+disp -0.85  0.90  1.00  0.79 -0.71  0.89 -0.43 -0.71 -0.59 -0.56  0.39
+hp   -0.78  0.83  0.79  1.00 -0.45  0.66 -0.71 -0.72 -0.24 -0.13  0.75
+drat  0.68 -0.70 -0.71 -0.45  1.00 -0.71  0.09  0.44  0.71  0.70 -0.09
+wt   -0.87  0.78  0.89  0.66 -0.71  1.00 -0.17 -0.55 -0.69 -0.58  0.43
+qsec  0.42 -0.59 -0.43 -0.71  0.09 -0.17  1.00  0.74 -0.23 -0.21 -0.66
+vs    0.66 -0.81 -0.71 -0.72  0.44 -0.55  0.74  1.00  0.17  0.21 -0.57
+am    0.60 -0.52 -0.59 -0.24  0.71 -0.69 -0.23  0.17  1.00  0.79  0.06
+gear  0.48 -0.49 -0.56 -0.13  0.70 -0.58 -0.21  0.21  0.79  1.00  0.27
+carb -0.55  0.53  0.39  0.75 -0.09  0.43 -0.66 -0.57  0.06  0.27  1.00
+
+Reading : wt, cyl, disp and hp have strong NEGATIVE
+correlation with mpg. Heavier, bigger, more powerful cars
+use more fuel. drat, vs and am are positively related.
+Note that wt, disp, cyl and hp are also strongly related to
+EACH OTHER (multicollinearity) - we should not use them all.
+
+=============================================
+ STEP 3 : GRAPHICAL EXPLORATION
+=============================================
+Plots saved : pairs, box plots, mpg vs wt.
+
+=============================================
+ STEP 4 : SIMPLE MODEL  mpg ~ wt
+=============================================
+
+Call:
+lm(formula = mpg ~ wt, data = cars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.5432 -2.3647 -0.1252  1.4096  6.8727 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  37.2851     1.8776  19.858  < 2e-16 ***
+wt           -5.3445     0.5591  -9.559 1.29e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.046 on 30 degrees of freedom
+Multiple R-squared:  0.7528,	Adjusted R-squared:  0.7446 
+F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10
+
+Reading : every extra 1000 lbs lowers mpg by about 5.34 
+R-squared = 0.753 : weight alone explains about 75 % of mpg.
+
+=============================================
+ STEP 5 : FULL MODEL  mpg ~ everything
+=============================================
+
+Call:
+lm(formula = mpg ~ ., data = num_cars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4506 -1.6044 -0.1196  1.2193  4.6271 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 12.30337   18.71788   0.657   0.5181  
+cyl         -0.11144    1.04502  -0.107   0.9161  
+disp         0.01334    0.01786   0.747   0.4635  
+hp          -0.02148    0.02177  -0.987   0.3350  
+drat         0.78711    1.63537   0.481   0.6353  
+wt          -3.71530    1.89441  -1.961   0.0633 .
+qsec         0.82104    0.73084   1.123   0.2739  
+vs           0.31776    2.10451   0.151   0.8814  
+am           2.52023    2.05665   1.225   0.2340  
+gear         0.65541    1.49326   0.439   0.6652  
+carb        -0.19942    0.82875  -0.241   0.8122  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.65 on 21 degrees of freedom
+Multiple R-squared:  0.869,	Adjusted R-squared:  0.8066 
+F-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07
+
+Reading : R-squared is high but NO single predictor is
+significant at 5%. That is the classic sign of
+multicollinearity - the predictors overlap so much that
+the model cannot tell which one deserves the credit.
+We need variable selection.
+
+=============================================
+ STEP 6 : STEPWISE VARIABLE SELECTION
+=============================================
+Start:  AIC=70.9
+mpg ~ cyl + disp + hp + drat + wt + qsec + vs + am + gear + carb
+
+       Df Sum of Sq    RSS    AIC
+- cyl   1    0.0799 147.57 68.915
+- vs    1    0.1601 147.66 68.932
+- carb  1    0.4067 147.90 68.986
+- gear  1    1.3531 148.85 69.190
+- drat  1    1.6270 149.12 69.249
+- disp  1    3.9167 151.41 69.736
+- hp    1    6.8399 154.33 70.348
+- qsec  1    8.8641 156.36 70.765
+<none>              147.49 70.898
+- am    1   10.5467 158.04 71.108
+- wt    1   27.0144 174.51 74.280
+
+Step:  AIC=68.92
+mpg ~ disp + hp + drat + wt + qsec + vs + am + gear + carb
+
+       Df Sum of Sq    RSS    AIC
+- vs    1    0.2685 147.84 66.973
+- carb  1    0.5201 148.09 67.028
+- gear  1    1.8211 149.40 67.308
+- drat  1    1.9826 149.56 67.342
+- disp  1    3.9009 151.47 67.750
+- hp    1    7.3632 154.94 68.473
+<none>              147.57 68.915
+- qsec  1   10.0933 157.67 69.032
+- am    1   11.8359 159.41 69.384
+- wt    1   27.0280 174.60 72.297
+
+Step:  AIC=66.97
+mpg ~ disp + hp + drat + wt + qsec + am + gear + carb
+
+       Df Sum of Sq    RSS    AIC
+- carb  1    0.6855 148.53 65.121
+- gear  1    2.1437 149.99 65.434
+- drat  1    2.2139 150.06 65.449
+- disp  1    3.6467 151.49 65.753
+- hp    1    7.1060 154.95 66.475
+<none>              147.84 66.973
+- am    1   11.5694 159.41 67.384
+- qsec  1   15.6830 163.53 68.200
+- wt    1   27.3799 175.22 70.410
+
+Step:  AIC=65.12
+mpg ~ disp + hp + drat + wt + qsec + am + gear
+
+       Df Sum of Sq    RSS    AIC
+- gear  1     1.565 150.09 63.457
+- drat  1     1.932 150.46 63.535
+<none>              148.53 65.121
+- disp  1    10.110 158.64 65.229
+- am    1    12.323 160.85 65.672
+- hp    1    14.826 163.35 66.166
+- qsec  1    26.408 174.94 68.358
+- wt    1    69.127 217.66 75.350
+
+Step:  AIC=63.46
+mpg ~ disp + hp + drat + wt + qsec + am
+
+       Df Sum of Sq    RSS    AIC
+- drat  1     3.345 153.44 62.162
+- disp  1     8.545 158.64 63.229
+<none>              150.09 63.457
+- hp    1    13.285 163.38 64.171
+- am    1    20.036 170.13 65.466
+- qsec  1    25.574 175.67 66.491
+- wt    1    67.572 217.66 73.351
+
+Step:  AIC=62.16
+mpg ~ disp + hp + wt + qsec + am
+
+       Df Sum of Sq    RSS    AIC
+- disp  1     6.629 160.07 61.515
+<none>              153.44 62.162
+- hp    1    12.572 166.01 62.682
+- qsec  1    26.470 179.91 65.255
+- am    1    32.198 185.63 66.258
+- wt    1    69.043 222.48 72.051
+
+Step:  AIC=61.52
+mpg ~ hp + wt + qsec + am
+
+       Df Sum of Sq    RSS    AIC
+- hp    1     9.219 169.29 61.307
+<none>              160.07 61.515
+- qsec  1    20.225 180.29 63.323
+- am    1    25.993 186.06 64.331
+- wt    1    78.494 238.56 72.284
+
+Step:  AIC=61.31
+mpg ~ wt + qsec + am
+
+       Df Sum of Sq    RSS    AIC
+<none>              169.29 61.307
+- am    1    26.178 195.46 63.908
+- qsec  1   109.034 278.32 75.217
+- wt    1   183.347 352.63 82.790
+
+Selected model :
+mpg ~ wt + qsec + am
+
+Call:
+lm(formula = mpg ~ wt + qsec + am, data = num_cars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4811 -1.5555 -0.7257  1.4110  4.6610 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   9.6178     6.9596   1.382 0.177915    
+wt           -3.9165     0.7112  -5.507 6.95e-06 ***
+qsec          1.2259     0.2887   4.247 0.000216 ***
+am            2.9358     1.4109   2.081 0.046716 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.459 on 28 degrees of freedom
+Multiple R-squared:  0.8497,	Adjusted R-squared:  0.8336 
+F-statistic: 52.75 on 3 and 28 DF,  p-value: 1.21e-11
+
+
+=============================================
+ STEP 7 : MODEL COMPARISON
+=============================================
+                           Model Adj_R2   AIC
+1                       mpg ~ wt  0.745 166.0
+2                  mpg ~ wt + hp  0.815 156.7
+3                  mpg ~ wt + am  0.736 168.0
+4 stepwise: mpg ~ wt + qsec + am  0.834 154.1
+5                     full model  0.807 163.7
+
+The stepwise model has the highest adjusted R-squared AND
+the lowest AIC, so it is the best model.
+Analysis of Variance Table
+
+Model 1: mpg ~ wt + qsec + am
+Model 2: mpg ~ cyl + disp + hp + drat + wt + qsec + vs + am + gear + carb
+  Res.Df    RSS Df Sum of Sq      F Pr(>F)
+1     28 169.29                           
+2     21 147.49  7    21.791 0.4432 0.8636
+Large p-value -> the dropped variables were not needed.
+
+=============================================
+ STEP 8 : INTERPRETATION OF  mpg ~ wt + qsec + am
+=============================================
+(Intercept)          wt        qsec          am 
+      9.618      -3.917       1.226       2.936 
+             2.5 % 97.5 %
+(Intercept) -4.638 23.874
+wt          -5.373 -2.460
+qsec         0.635  1.817
+am           0.046  5.826
+
+  wt   : each extra 1000 lbs  ->  about -3.92 mpg (holding qsec, am fixed)
+  qsec : each extra second of quarter-mile time  ->  about + 1.23 mpg (slower cars = less powerful = more economical)
+  am   : a manual car gets about + 2.94 mpg more than an automatic of the same wt and qsec
+  Adjusted R-squared = 0.834 -> the model explains about 83 % of the variation in mpg.
+
+=============================================
+ STEP 9 : DIAGNOSTICS
+=============================================
+
+	Shapiro-Wilk normality test
+
+data:  residuals(best)
+W = 0.9411, p-value = 0.08043
+
+Correlation among chosen predictors :
+        wt  qsec    am
+wt    1.00 -0.17 -0.69
+qsec -0.17  1.00 -0.23
+am   -0.69 -0.23  1.00
+
+Residuals are approximately normal, no strong pattern in the
+residual plot, and the chosen predictors are not highly
+correlated with each other. The model is valid.
+
+=============================================
+ STEP 10 : PREDICTION
+=============================================
+   wt qsec am predicted_mpg
+1 2.5   18  1         24.83
+2 3.5   16  0         15.52
+
+Done.

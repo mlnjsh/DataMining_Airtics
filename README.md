@@ -17,9 +17,26 @@ Six commented, beginner-friendly R scripts in the `R_Scripts/` folder. Each file
 
 | File | Topic | Data used |
 |---|---|---|
+| `00_R_Basics_Complete_Reference.R` | All-in-one R primer: maths, data structures, loops, functions, packages, data sets, descriptive statistics, distributions, plots | Built-in `mtcars`, `iris` |
 | `01_Hypothesis_Testing_One_Sample.R` | Z test, t test and proportion test for one sample | Small hand-typed examples |
 | `02_Hypothesis_Testing_Two_Sample.R` | F test for variances, two-sample Z and t tests, paired t test, two-proportion test | Small hand-typed examples |
 | `03_One_Way_ANOVA.R` | Comparing three or more means, Tukey post-hoc, assumption checks | Built-in `PlantGrowth` |
 | `04_Two_Way_ANOVA.R` | Two factors, interaction effect, interaction plot | Built-in `ToothGrowth` |
 | `05_Linear_Regression.R` | Simple and multiple regression, model comparison, diagnostics, prediction | Built-in `mtcars` |
 | `06_Logistic_Regression.R` | Binary outcome, odds ratios, train/test split, confusion matrix | Pima Indians Diabetes (downloaded from the web, falls back to `mtcars` if offline) |
+
+## Assessment Solutions
+
+Step-by-step solutions for the two assessments are in `Assessment_Solutions/`:
+
+| File | What it is |
+|---|---|
+| `Formative_Assessment_Solution.md` | Slide-by-slide plan (13 content slides) with speaker notes for the 40-mark presentation on linear and logistic regression |
+| `Summative_Assessment_Solution.md` | Full report-style solution for Task 1 (histogram function, regression with variable selection) and Task 2 (one-way and two-way ANOVA on crop yield) |
+| `Summative_Task1_Solution.R`, `Summative_Task2_Solution.R` | The R programs behind the report, commented step by step |
+| `Summative_Task1_Output.txt`, `Summative_Task2_Output.txt` | Console output from running the two programs |
+| `plots/` | All figures produced by the two programs |
+
+Run the scripts with the working directory set to `Assessment_Solutions/` so the relative paths to the CSV files resolve.
+
+`R_Scripts/00_R_Basics_Complete_Reference.R` is a single-file R primer covering arithmetic and maths functions, data structures, loops and functions, packages, built-in data sets, file input/output, descriptive statistics, probability distributions, sampling, plotting and a map of the statistical tests to the six topic files.
