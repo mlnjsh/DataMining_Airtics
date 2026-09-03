@@ -1,0 +1,305 @@
+##########################################################
+#  TASK 1 : CARS DATA
+##########################################################
+
+=== 1A. DATA QUALITY ===
+Rows x columns : 32 12 
+'data.frame':	32 obs. of  12 variables:
+ $ model: chr  "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...
+ $ mpg  : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+ $ cyl  : int  6 6 4 6 8 6 8 4 4 6 ...
+ $ disp : num  160 160 108 258 360 ...
+ $ hp   : int  110 110 93 110 175 105 245 62 95 123 ...
+ $ drat : num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+ $ wt   : num  2.62 2.88 2.32 3.21 3.44 ...
+ $ qsec : num  16.5 17 18.6 19.4 17 ...
+ $ vs   : int  0 0 1 1 0 1 0 1 1 1 ...
+ $ am   : int  1 1 1 0 0 0 0 0 0 0 ...
+ $ gear : int  4 4 4 3 3 3 3 4 4 4 ...
+ $ carb : int  4 4 1 1 2 1 4 2 2 4 ...
+
+Missing values per column :
+model   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb 
+    0     0     0     0     0     0     0     0     0     0     0     0 
+Duplicate rows : 0 
+Duplicate car names : 0 
+
+Distinct values per column (small counts = categorical) :
+ mpg  cyl disp   hp drat   wt qsec   vs   am gear carb 
+  25    3   27   22   22   29   30    2    2    3    6 
+
+=== 1B. UNIVARIATE : CONTINUOUS VARIABLES ===
+      n   mean     sd    min        Q1  median     Q3     max skew CV_pct
+mpg  32  20.09   6.03 10.400  15.42500  19.200  22.80  33.900 0.61   30.0
+disp 32 230.72 123.94 71.100 120.82500 196.300 326.00 472.000 0.38   53.7
+hp   32 146.69  68.56 52.000  96.50000 123.000 180.00 335.000 0.73   46.7
+drat 32   3.60   0.53  2.760   3.08000   3.695   3.92   4.930 0.27   14.9
+wt   32   3.22   0.98  1.513   2.58125   3.325   3.61   5.424 0.42   30.4
+qsec 32  17.85   1.79 14.500  16.89250  17.710  18.90  22.900 0.37   10.0
+
+Reading skew : > 0.5 right-skewed, < -0.5 left-skewed.
+CV_pct = coefficient of variation = spread relative to the mean.
+
+Outliers by the 1.5 x IQR rule :
+   mpg : Toyota Corolla (33.9) 
+   hp : Maserati Bora (335) 
+   wt : Cadillac Fleetwood (5.25), Lincoln Continental (5.424), Chrysler Imperial (5.345) 
+   qsec : Merc 230 (22.9) 
+
+=== 1B. UNIVARIATE : CATEGORICAL VARIABLES ===
+
+ cyl :
+           4    6    8
+count   11.0  7.0 14.0
+percent 34.4 21.9 43.8
+
+ vs :
+           0    1
+count   18.0 14.0
+percent 56.2 43.8
+
+ am :
+           0    1
+count   19.0 13.0
+percent 59.4 40.6
+
+ gear :
+           3    4    5
+count   15.0 12.0  5.0
+percent 46.9 37.5 15.6
+
+ carb :
+           1    2   3    4   6   8
+count    7.0 10.0 3.0 10.0 1.0 1.0
+percent 21.9 31.2 9.4 31.2 3.1 3.1
+
+=== 1C. CORRELATION MATRIX (all numeric columns) ===
+       mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+mpg   1.00 -0.85 -0.85 -0.78  0.68 -0.87  0.42  0.66  0.60  0.48 -0.55
+cyl  -0.85  1.00  0.90  0.83 -0.70  0.78 -0.59 -0.81 -0.52 -0.49  0.53
+disp -0.85  0.90  1.00  0.79 -0.71  0.89 -0.43 -0.71 -0.59 -0.56  0.39
+hp   -0.78  0.83  0.79  1.00 -0.45  0.66 -0.71 -0.72 -0.24 -0.13  0.75
+drat  0.68 -0.70 -0.71 -0.45  1.00 -0.71  0.09  0.44  0.71  0.70 -0.09
+wt   -0.87  0.78  0.89  0.66 -0.71  1.00 -0.17 -0.55 -0.69 -0.58  0.43
+qsec  0.42 -0.59 -0.43 -0.71  0.09 -0.17  1.00  0.74 -0.23 -0.21 -0.66
+vs    0.66 -0.81 -0.71 -0.72  0.44 -0.55  0.74  1.00  0.17  0.21 -0.57
+am    0.60 -0.52 -0.59 -0.24  0.71 -0.69 -0.23  0.17  1.00  0.79  0.06
+gear  0.48 -0.49 -0.56 -0.13  0.70 -0.58 -0.21  0.21  0.79  1.00  0.27
+carb -0.55  0.53  0.39  0.75 -0.09  0.43 -0.66 -0.57  0.06  0.27  1.00
+
+Correlation of every variable with mpg, strongest first :
+   mpg   drat     vs     am   gear   qsec   carb     hp   disp    cyl     wt 
+ 1.000  0.681  0.664  0.600  0.480  0.419 -0.551 -0.776 -0.848 -0.852 -0.868 
+
+Strongly correlated predictor PAIRS (|r| > 0.7, excluding mpg) :
+   cyl - disp : r = 0.9 
+   cyl - hp : r = 0.83 
+   disp - hp : r = 0.79 
+   disp - drat : r = -0.71 
+   cyl - wt : r = 0.78 
+   disp - wt : r = 0.89 
+   drat - wt : r = -0.71 
+   hp - qsec : r = -0.71 
+   cyl - vs : r = -0.81 
+   disp - vs : r = -0.71 
+   hp - vs : r = -0.72 
+   qsec - vs : r = 0.74 
+   drat - am : r = 0.71 
+   am - gear : r = 0.79 
+   hp - carb : r = 0.75 
+
+=== 1C. mpg BY EACH CATEGORICAL VARIABLE ===
+
+mpg by cyl :
+  get(v) mpg.mean mpg.sd mpg.n
+1      4    26.66   4.51 11.00
+2      6    19.74   1.45  7.00
+3      8    15.10   2.56 14.00
+
+mpg by vs :
+  get(v) mpg.mean mpg.sd mpg.n
+1      0    16.62   3.86 18.00
+2      1    24.56   5.38 14.00
+
+mpg by am :
+  get(v) mpg.mean mpg.sd mpg.n
+1      0    17.15   3.83 19.00
+2      1    24.39   6.17 13.00
+
+mpg by gear :
+  get(v) mpg.mean mpg.sd mpg.n
+1      3    16.11   3.37 15.00
+2      4    24.53   5.28 12.00
+3      5    21.38   6.66  5.00
+
+mpg by carb :
+  get(v) mpg.mean mpg.sd mpg.n
+1      1    25.34   6.00  7.00
+2      2    22.40   5.47 10.00
+3      3    16.30   1.05  3.00
+4      4    15.79   3.91 10.00
+5      6    19.70     NA  1.00
+6      8    15.00     NA  1.00
+
+Weight by transmission (is 'am' confounded with weight ?) :
+  am wt.mean wt.sd
+1  0    3.77  0.78
+2  1    2.41  0.62
+t-test mpg ~ am : p = 0.00137 
+Same test after adjusting for weight (lm mpg ~ wt + am) : p for am = 0.988 
+
+mpg by cyl x am (cell means and counts) :
+   am
+cyl    0    1
+  4 22.9 28.1
+  6 19.1 20.6
+  8 15.1 15.4
+   am
+cyl  0  1
+  4  3  8
+  6  4  3
+  8 12  2
+
+Top 5 and bottom 5 cars by mpg :
+            model  mpg cyl    wt  hp am
+20 Toyota Corolla 33.9   4 1.835  65  1
+18       Fiat 128 32.4   4 2.200  66  1
+19    Honda Civic 30.4   4 1.615  52  1
+28   Lotus Europa 30.4   4 1.513 113  1
+26      Fiat X1-9 27.3   4 1.935  66  1
+                 model  mpg cyl    wt  hp am
+15  Cadillac Fleetwood 10.4   8 5.250 205  0
+16 Lincoln Continental 10.4   8 5.424 215  0
+24          Camaro Z28 13.3   8 3.840 245  0
+7           Duster 360 14.3   8 3.570 245  0
+17   Chrysler Imperial 14.7   8 5.345 230  0
+
+Correlation of mpg with hp per tonne : -0.314 
+
+
+##########################################################
+#  TASK 2 : CROP YIELD DATA
+##########################################################
+
+=== 2A. DATA QUALITY ===
+Rows x columns : 96 4 
+'data.frame':	96 obs. of  4 variables:
+ $ density   : int  1 2 1 2 1 2 1 2 1 2 ...
+ $ block     : int  1 2 3 4 1 2 3 4 1 2 ...
+ $ fertilizer: int  1 1 1 1 1 1 1 1 1 1 ...
+ $ yield     : num  177 178 176 178 177 ...
+
+Missing values per column :
+   density      block fertilizer      yield 
+         0          0          0          0 
+Duplicate rows : 0 
+
+Design balance (fertilizer x density) :
+    
+     Low High
+  F1  16   16
+  F2  16   16
+  F3  16   16
+
+Design balance (block x density) :
+   
+    Low High
+  1  24    0
+  2   0   24
+  3  24    0
+  4   0   24
+Note : block 1 and 3 only appear with Low density, block 2 and 4 only with High.
+Block and density are therefore CONFOUNDED : we cannot separate their effects.
+
+=== 2B. UNIVARIATE : YIELD ===
+       n   mean   sd      min       Q1   median       Q3      max skew CV_pct
+yield 96 177.02 0.66 175.3608 176.4687 177.0581 177.3986 179.0609 0.11    0.4
+Range of yield : 3.7 bushels / acre
+Relative spread : SD is 0.38 % of the mean
+IQR outliers : 1 
+   density block fertilizer    yield
+80    High     4         F3 179.0609
+
+Shapiro-Wilk normality of yield : p = 0.613 
+
+Counts per factor level :
+$fertilizer
+
+F1 F2 F3 
+32 32 32 
+
+$density
+
+ Low High 
+  48   48 
+
+$block
+
+ 1  2  3  4 
+24 24 24 24 
+
+
+=== 2C. YIELD BY EACH FACTOR ===
+
+yield by fertilizer :
+  get(f) yield.mean yield.sd yield.min yield.max yield.n
+1     F1    176.757    0.685   175.361   178.357  32.000
+2     F2    176.933    0.574   175.748   178.135  32.000
+3     F3    177.356    0.599   176.301   179.061  32.000
+
+yield by density :
+  get(f) yield.mean yield.sd yield.min yield.max yield.n
+1    Low    176.784    0.607   175.361   178.142  48.000
+2   High    177.246    0.644   175.883   179.061  48.000
+
+yield by block :
+  get(f) yield.mean yield.sd yield.min yield.max yield.n
+1      1    176.856    0.628   175.361   178.142  24.000
+2      2    177.317    0.645   176.044   178.357  24.000
+3      3    176.713    0.591   175.748   177.701  24.000
+4      4    177.176    0.649   175.883   179.061  24.000
+
+Effect sizes :
+  F3 vs F1 : + 0.599 bushels ( 0.34 % ), 0.9 SD
+  F3 vs F2 : + 0.423 bushels ( 0.24 % ), 0.64 SD
+  F2 vs F1 : + 0.176 bushels ( 0.1 % ), 0.27 SD
+  High vs Low density : + 0.462 bushels ( 0.26 % ), 0.7 SD
+
+=== 2D. FERTILIZER x DENSITY ===
+  fertilizer density yield.mean yield.sd
+1         F1     Low    176.440    0.586
+2         F2     Low    176.778    0.541
+3         F3     Low    177.136    0.510
+4         F1    High    177.074    0.641
+5         F2    High    177.088    0.580
+6         F3    High    177.577    0.615
+
+Cell means as a table :
+      Low   High
+F1 176.44 177.07
+F2 176.78 177.09
+F3 177.14 177.58
+
+Density gain within each fertilizer (High - Low) :
+   F1    F2    F3 
+0.635 0.310 0.441 
+Similar gains in every row  ->  no interaction.
+
+Best and worst combinations :
+  fertilizer density  yield
+6         F3    High 177.58
+3         F3     Low 177.14
+5         F2    High 177.09
+4         F1    High 177.07
+2         F2     Low 176.78
+1         F1     Low 176.44
+Gap best - worst : 1.14 bushels / acre ( 0.65 % )
+
+Variance homogeneity (SD per cell) :
+     Low  High
+F1 0.586 0.641
+F2 0.541 0.580
+F3 0.510 0.615
+Bartlett test p = 0.963 
+
+EDA complete. Plots saved in plots 
