@@ -31,8 +31,8 @@ Step-by-step solutions for the two assessments are in `Assessment_Solutions/`:
 
 | File | What it is |
 |---|---|
-| `Formative_Assessment_Solution.md` | Slide-by-slide plan (13 content slides) with speaker notes for the 40-mark presentation on linear and logistic regression |
-| `Summative_Assessment_Solution.md` | Full report-style solution for Task 1 (histogram function, regression with variable selection) and Task 2 (one-way and two-way ANOVA on crop yield) |
+| `Formative_Assessment_Solution.md` (also `.docx`) | Slide-by-slide plan (13 content slides) with speaker notes for the 40-mark presentation on linear and logistic regression |
+| `Summative_Assessment_Solution.md` (also `.docx`) | Full report-style solution for Task 1 (histogram function, regression with variable selection) and Task 2 (one-way and two-way ANOVA on crop yield) |
 | `Summative_Task1_Solution.R`, `Summative_Task2_Solution.R` | The R programs behind the report, commented step by step |
 | `Summative_Task1_Output.txt`, `Summative_Task2_Output.txt` | Console output from running the two programs |
 | `plots/` | All figures produced by the two programs |
