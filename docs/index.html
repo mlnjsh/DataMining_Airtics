@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DataMining_Airtics · Data Mining Using R</title>
+<style>
+  :root { --navy:#1F3A5F; --blue:#2E5A88; --red:#D0342C; --light:#F2F5F9; --text:#222; --muted:#555; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Calibri, "Segoe UI", Arial, sans-serif; color:var(--text); background:#fff; }
+  header { background:var(--navy); color:#fff; padding:56px 24px 48px; text-align:center;
+           background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 18px, transparent 18px 60px); border-bottom:10px solid var(--red); }
+  header h1 { margin:0 0 8px; font-size:2.8rem; letter-spacing:.5px; }
+  header p { margin:0; color:#C9D3DF; font-size:1.15rem; }
+  header .tags { margin-top:14px; color:#C9D3DF; font-size:.95rem; }
+  main { max-width:1000px; margin:0 auto; padding:32px 20px 60px; }
+  h2 { color:var(--navy); border-bottom:2px solid var(--light); padding-bottom:6px; margin-top:40px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; }
+  .card { background:var(--light); border:1px solid #dde4ee; border-radius:12px; padding:18px 20px; }
+  .card h3 { margin:0 0 6px; color:var(--blue); font-size:1.1rem; }
+  .card p { margin:0 0 10px; color:var(--muted); font-size:.95rem; }
+  .card a { display:inline-block; margin:2px 8px 2px 0; color:var(--navy); font-weight:600; text-decoration:none; }
+  .card a:hover { text-decoration:underline; }
+  .btn { display:inline-block; background:var(--red); color:#fff !important; padding:10px 18px; border-radius:8px; font-weight:700; text-decoration:none; margin-top:6px; }
+  .btn.blue { background:var(--blue); }
+  table { border-collapse:collapse; width:100%; font-size:.95rem; }
+  th { background:var(--blue); color:#fff; text-align:left; padding:8px 10px; }
+  td { padding:8px 10px; border-bottom:1px solid #e3e8ef; }
+  tr:nth-child(even) td { background:var(--light); }
+  code { background:var(--light); padding:1px 5px; border-radius:4px; font-family:Consolas, monospace; font-size:.9em; }
+  footer { text-align:center; color:var(--muted); font-size:.9rem; padding:24px; border-top:1px solid #e3e8ef; }
+  img.preview { width:100%; border-radius:10px; border:1px solid #dde4ee; margin-top:8px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>DataMining_Airtics</h1>
+  <p>Data Mining Using R · teaching materials, worked assessments and exploratory analysis</p>
+  <div class="tags">Hypothesis testing • ANOVA • Regression • Logistic regression</div>
+  <p style="margin-top:22px">
+    <a class="btn" href="BasicsOfR_Interactive_Slides.html">Open the interactive R slides</a>
+    <a class="btn blue" href="https://github.com/mlnjsh/DataMining_Airtics">View on GitHub</a>
+  </p>
+</header>
+
+<main>
+  <h2>Start here</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>🖥️ Interactive slides: Basics of R</h3>
+      <p>An in-browser primer on R syntax, data structures and plotting. Nothing to install.</p>
+      <a href="BasicsOfR_Interactive_Slides.html">Open slides →</a>
+    </div>
+    <div class="card">
+      <h3>📖 Six-session lesson plan</h3>
+      <p>The course outline, session by session, with learning outcomes and activities.</p>
+      <a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/Data_Mining_Using_R_6_Session_Lesson_Plan.md">Read plan →</a>
+    </div>
+    <div class="card">
+      <h3>📊 Lecture 1 deck</h3>
+      <p>Introduction to data mining.</p>
+      <a href="https://github.com/mlnjsh/DataMining_Airtics/raw/main/datamining-lect1.pptx">Download pptx →</a>
+    </div>
+  </div>
+
+  <h2>R scripts (base R only)</h2>
+  <table>
+    <tr><th>#</th><th>Script</th><th>Topic</th></tr>
+    <tr><td>00</td><td><a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/R_Scripts/00_R_Basics_Complete_Reference.R"><code>00_R_Basics_Complete_Reference.R</code></a></td><td>Maths, data structures, loops, functions, packages, statistics, distributions, plots</td></tr>
+    <tr><td>01</td><td><a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/R_Scripts/01_Hypothesis_Testing_One_Sample.R"><code>01_Hypothesis_Testing_One_Sample.R</code></a></td><td>Z test, t test, proportion test</td></tr>
+    <tr><td>02</td><td><a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/R_Scripts/02_Hypothesis_Testing_Two_Sample.R"><code>02_Hypothesis_Testing_Two_Sample.R</code></a></td><td>F test, two-sample tests, paired t, two proportions</td></tr>
+    <tr><td>03</td><td><a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/R_Scripts/03_One_Way_ANOVA.R"><code>03_One_Way_ANOVA.R</code></a></td><td>One-way ANOVA, Tukey HSD, assumptions</td></tr>
+    <tr><td>04</td><td><a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/R_Scripts/04_Two_Way_ANOVA.R"><code>04_Two_Way_ANOVA.R</code></a></td><td>Two-way ANOVA and interactions</td></tr>
+    <tr><td>05</td><td><a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/R_Scripts/05_Linear_Regression.R"><code>05_Linear_Regression.R</code></a></td><td>Simple and multiple regression, diagnostics, prediction</td></tr>
+    <tr><td>06</td><td><a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/R_Scripts/06_Logistic_Regression.R"><code>06_Logistic_Regression.R</code></a></td><td>Logistic regression, odds ratios, confusion matrix</td></tr>
+  </table>
+
+  <h2>Assessments and solutions</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>🎤 Formative: presentation (40 marks)</h3>
+      <p>16-slide deck with speaker notes on linear regression, its types, and the contrast with logistic regression.</p>
+      <a href="https://github.com/mlnjsh/DataMining_Airtics/raw/main/Assessment_Solutions/presentation/Formative_Assessment_Presentation.pptx">Download pptx →</a>
+      <a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/Assessment_Solutions/Formative_Assessment_Solution.md">Slide plan →</a>
+      <img class="preview" src="img/slides_preview.png" alt="slide preview">
+    </div>
+    <div class="card">
+      <h3>✅ Summative: R report (60 marks)</h3>
+      <p>Task 1: histogram function and regression with variable selection. Task 2: one-way and two-way ANOVA on crop yield.</p>
+      <a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/Assessment_Solutions/Summative_Assessment_Solution.md">Read solution →</a>
+      <a href="https://github.com/mlnjsh/DataMining_Airtics/raw/main/Assessment_Solutions/Summative_Assessment_Solution.docx">Word →</a>
+      <img class="preview" src="img/task2_tukey.png" alt="Tukey plot">
+    </div>
+    <div class="card">
+      <h3>🔍 Exploratory data analysis</h3>
+      <p>Four-layer EDA of both datasets with interpretation and actionable insights.</p>
+      <a href="https://github.com/mlnjsh/DataMining_Airtics/blob/main/Assessment_Solutions/EDA/EDA_Report.md">Read report →</a>
+      <a href="https://github.com/mlnjsh/DataMining_Airtics/raw/main/Assessment_Solutions/EDA/EDA_Report.docx">Word →</a>
+      <img class="preview" src="img/eda_mpg_wt_am.png" alt="EDA figure">
+    </div>
+  </div>
+</main>
+
+<footer>DataMining_Airtics · MIT Licence · <a href="https://github.com/mlnjsh">@mlnjsh</a></footer>
+</body>
+</html>
